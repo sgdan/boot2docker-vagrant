@@ -1,0 +1,49 @@
+{
+  "builders": [
+    {
+      "boot_command": [
+        "<enter>"
+      ],
+      "boot_wait": "3s",
+      "disk_size": 20000,
+      "guest_additions_mode": "disable",
+      "guest_os_type": "Linux26_64",
+      "iso_checksum": "f54661b24c75cf824effbdf8b39e15f0",
+      "iso_checksum_type": "md5",
+      "iso_url": "boot2docker-install.iso",
+      "shutdown_command": "sudo poweroff",
+      "ssh_password": "packer",
+      "ssh_username": "tc",
+      "type": "virtualbox-iso",
+      "vboxmanage": [
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--memory",
+          "1024"
+        ],
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--cpus",
+          "1"
+        ]
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "output": "boot2docker.box",
+      "type": "vagrant"
+    }
+  ],
+  "provisioners": [
+    {
+      "scripts": [
+        "install.sh"
+      ],
+      "type": "shell"
+    }
+  ]
+}
+

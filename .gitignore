@@ -1,0 +1,6 @@
+/.project
+/.vagrant
+*.iso
+*.box
+*.md5
+/packer_cache/
