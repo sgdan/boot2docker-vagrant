@@ -52,6 +52,8 @@ else
     chmod 600 .ssh/authorized_keys
     chown -R vagrant:staff .ssh
     echo 'vagrant ALL=NOPASSWD: ALL' >> /etc/sudoers
+    addgroup docker
+    adduser vagrant docker
     
     # disable other users
     passwd -d root
